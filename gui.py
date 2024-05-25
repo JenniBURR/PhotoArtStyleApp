@@ -189,10 +189,10 @@ def select_style_image(style_label):
 def display_result_window(result_img):
     result_window = Toplevel(window)
     result_window.title("Result Image")
-    result_window.geometry("1200x1200")
     result_label = Label(result_window)
-    result_label.pack()
-    result_img = ImageTk.PhotoImage(result_img)
+    result_label.pack(expand=True)  # Make the label expand to fill the window
+    result_img = ImageTk.PhotoImage(result_img.resize(
+        (512, 512), Image.LANCZOS))  # Resize the image to 512x512
     result_label.config(image=result_img)
     result_label.image = result_img
 
